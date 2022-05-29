@@ -1,4 +1,4 @@
-<form>
+<form #f="ngForm">
 
     <div class="form-group">
         <label for="name">Course Name</label>
@@ -22,9 +22,12 @@
 
     <div class="form-group">
       <label for="moneyBack">
-        <input id="moneyBack" type="checkbox">
+        <input ngModel name="hasMoneyBack" #hasMoneyBack="ngModel" id="moneyBack" type="checkbox">
         30-day money-back guarantee
       </label>
     </div>
-    <button class="btn btn-primary" type="submit">Create</button>
+
+    <p>{{ f.value | json }}</p>
+
+    <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Create</button>
 </form>
